@@ -1,0 +1,69 @@
+{
+  "id": "demo",
+  "realm": "demo",
+  "enabled": true,
+  "clients": [
+    {
+      "clientId": "my-api",
+      "name": "My API Client",
+      "protocol": "openid-connect",
+      "publicClient": true,
+      "directAccessGrantsEnabled": true,
+      "standardFlowEnabled": true,
+      "redirectUris": ["*"],
+      "webOrigins": ["*"],
+      "defaultClientScopes": ["email", "profile"],
+      "optionalClientScopes": ["address", "phone"],
+      "attributes": {
+        "post.logout.redirect.uris": "+"
+      }
+    }
+  ],
+  "roles": {
+    "realm": [
+      {
+        "name": "reader",
+        "description": "Read-only access role"
+      },
+      {
+        "name": "writer",
+        "description": "Write access role"
+      }
+    ]
+  },
+  "users": [
+    {
+      "username": "reader-user",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Reader",
+      "lastName": "User",
+      "email": "reader@example.com",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "reader123",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["reader"]
+    },
+    {
+      "username": "writer-user",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Writer",
+      "lastName": "User",
+      "email": "writer@example.com",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "writer123",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["writer"]
+    }
+  ]
+}
+

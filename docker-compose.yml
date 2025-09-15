@@ -1,0 +1,59 @@
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:22.0
+    command: >
+      start-dev
+      --http-port=8080
+      --import-realm
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    volumes:
+      - ./keycloak/demo-realm.json:/opt/keycloak/data/import/demo-realm.json:ro
+    ports:
+      - "8080:8080"
+    networks: [ demo ]
+
+  envoy:
+    image: envoyproxy/envoy:v1.30-latest
+    command: ["envoy", "-c", "/etc/envoy/envoy.yaml", "--log-level", "info"]
+    volumes:
+      - ./envoy/envoy.yaml:/etc/envoy/envoy.yaml:ro
+    ports:
+      - "8081:8081"         # 외부 진입 포트(클라이언트는 http://localhost:8081 호출)
+    depends_on:
+      - keycloak
+      - opa
+      - app
+    networks: [ demo ]
+
+  opa:
+    image: openpolicyagent/opa:latest-envoy
+    command:
+      - "run"
+      - "--server"
+      - "--addr=:8181"
+      - "--diagnostic-addr=:8282"
+      - "--set=plugins.envoy_ext_authz_grpc.addr=:9191"
+#      - "--set=plugins.envoy_ext_authz_grpc.path=envoy.auth.v3"
+#      - "--set=plugins.envoy_ext_authz_grpc.query=data.http.authz.allow"
+      - "--set=plugins.envoy_ext_authz_grpc.path=http/authz/allow"
+      - "--set=decision_logs.console=true"
+      - "/policy/policy.rego"
+    volumes:
+      - ./opa/policy.rego:/policy/policy.rego:ro
+    ports:
+      - "8181:8181"   # OPA REST (디버그용)
+      - "8282:8282"   # OPA 진단
+    networks: [ demo ]
+
+  app:
+    image: hashicorp/http-echo:0.2.3
+    command: ["-listen=:5678", "-text=Hello, protected world!"]
+    expose:
+      - "5678"
+    networks: [ demo ]
+
+networks:
+  demo: {}
+
