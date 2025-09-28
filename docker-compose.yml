@@ -34,11 +34,10 @@ services:
       - "--server"
       - "--addr=:8181"
       - "--diagnostic-addr=:8282"
-      - "--set=plugins.envoy_ext_authz_grpc.addr=:9191"
-#      - "--set=plugins.envoy_ext_authz_grpc.path=envoy.auth.v3"
-#      - "--set=plugins.envoy_ext_authz_grpc.query=data.http.authz.allow"
-      - "--set=plugins.envoy_ext_authz_grpc.path=http/authz/allow"
+      - "--log-level=debug"
       - "--set=decision_logs.console=true"
+      - "--set=plugins.envoy_ext_authz_grpc.addr=:9191"
+      - "--set=plugins.envoy_ext_authz_grpc.path=http/authz/allow"
       - "/policy/policy.rego"
     volumes:
       - ./opa/policy.rego:/policy/policy.rego:ro

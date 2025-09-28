@@ -1,0 +1,14 @@
+{
+  "input": {
+    "attributes": {
+      "request": {
+        "http": {
+          "headers": {
+            "authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIzcXdVUXhtUURpRVp5UXFtSFdNLTE1Vk10SV9iU1ZNRjdUOWVOYWlhazg4In0.eyJleHAiOjE3NTkwNzc3MDgsImlhdCI6MTc1OTA3NzQwOCwianRpIjoiY2NlNDU1YzQtNWUyMy00MTcxLTg0MTktYTNiYjM0YTFkZjRhIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9kZW1vIiwic3ViIjoiNWEzYjkxYTgtNmZhMS00NmYxLWE5YzItZjNlNDJkMmJhMWEwIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoibXktYXBpIiwic2Vzc2lvbl9zdGF0ZSI6IjUxNGM3ZTZkLWIxM2ItNDYyNC1iYTJmLWZmMTNiY2Y3ZDVhOCIsInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsInNpZCI6IjUxNGM3ZTZkLWIxM2ItNDYyNC1iYTJmLWZmMTNiY2Y3ZDVhOCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiV3JpdGVyIFVzZXIiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ3cml0ZXItdXNlciIsImdpdmVuX25hbWUiOiJXcml0ZXIiLCJmYW1pbHlfbmFtZSI6IlVzZXIiLCJlbWFpbCI6IndyaXRlckBleGFtcGxlLmNvbSJ9.gQJZD9PAVxlS0gVUEACGw7Rgc9-YdBXc3b6y_rilPAtgwA_qs_K0-OsDnCGNtkxUvid8iZAiQ0Aqix6zjrmXklyyua3DF-iWVyR16JQVKhvhbfpwakbk9MJ49PuZ1WPBIrS8NWRyu4iFsw5KUBtruVorb_T-Xn11JLbLUF_29q6kfO1WL6_mqAwSlJ4h8AftS8CqsItkJmJTvb9ZIOJwUvqaQJLztz8hlsFTzY8f_z1Yke5SGdCkHK889aAsWuK9TvjjfpnM-jYDEH_5mIWKp-9cXbX5MKawXptqYA4w3GF0ktMMwnBZj5-pBi4KHRx7A_HJgD-th84ABGmoX9dO0Q"
+          }
+        }
+      }
+    }
+  }
+}
+

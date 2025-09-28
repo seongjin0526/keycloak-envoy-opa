@@ -29,8 +29,9 @@ static_resources:
                       uri: "http://keycloak:8080/realms/demo/protocol/openid-connect/certs"
                       cluster: keycloak
                       timeout: 5s
-                  forward_payload_header: "x-jwt-payload"
-                  payload_in_metadata: "jwt"
+                  forward: true
+                 #forward_payload_header: "x-jwt-payload"
+                 #payload_in_metadata: "jwt"
               rules:
                 - match: { prefix: "/" }
                   requires: { provider_name: "keycloak" }
@@ -44,7 +45,7 @@ static_resources:
               grpc_service:
                 envoy_grpc:
                   cluster_name: opa
-                timeout: 0.2s
+                timeout: 1s
           - name: envoy.filters.http.router
             typed_config:
               "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
