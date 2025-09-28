@@ -34,7 +34,7 @@ static_resources:
                  #payload_in_metadata: "jwt"
               rules:
                 - match: { prefix: "/" }
-                  requires: { provider_name: "keycloak" }
+                  #requires: { provider_name: "keycloak" }
           - name: envoy.filters.http.ext_authz
             typed_config:
               "@type": type.googleapis.com/envoy.extensions.filters.http.ext_authz.v3.ExtAuthz
